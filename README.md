@@ -5,17 +5,31 @@
 * Tesseract  -> https://www.github.com/UB-Mannheim/tesseract/wiki
 
 ## Instalation - part 2 (pip)
-* pip install pillow
-* pip install matplotlib
-* pip install opencv-python
-* pip install pytesseract
+```bash
+pip install pillow
+```
+```bash
+pip install matplotlib
+```
+```bash
+pip install opencv-python
+```
+```bash
+pip install pytesseract
+```
 
 ## Clone
-```
+```bash
 git clone https://github.com/Joselacerdajunior/digital-processing-of-automotive-plates.git
 ```
 Or download the zip file directly from [Github](https://github.com/Joselacerdajunior/digital-processing-of-automotive-plates) and unzip it.
 
 ## Run
-Go to main.py path and execute:
-* python main.py
+Go to main.py path and execute in terminal:
+```bash
+python main.py
+```
+
+
+## Authors
+- José Lacerda Junior [linkedin](https://www.linkedin.com/in/joselacerdajunior/), [Github](https://github.com/Joselacerdajunior)
