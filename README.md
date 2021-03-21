@@ -1,10 +1,10 @@
 # digital-processing-of-automotive-plates
 
-## Instalation - part 1 (.exe)
+## Installation - part 1 (.exe)
 * Python 3.9 -> https://www.python.org/downloads/
 * Tesseract  -> https://www.github.com/UB-Mannheim/tesseract/wiki
 
-## Instalation - part 2 (pip)
+## Installation - part 2 (pip)
 ```bash
 pip install pillow
 ```
@@ -31,5 +31,5 @@ python main.py
 ```
 
 
-## Authors
+## Author
 - José Lacerda Junior [linkedin](https://www.linkedin.com/in/joselacerdajunior/), [Github](https://github.com/Joselacerdajunior)
