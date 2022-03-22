@@ -7,7 +7,7 @@ nameImages = [
     'img3.jpg',
     'img4.jpg'
 ]
-platesInDataBase = ["EWK-7037", "RIO2A18"]
+platesInDataBase = ["EWK-7037", "RIO2A18", "AAA-3333"]
 plates = ["", "", "", ""]
 authorization = ["", "", "", ""]
 image = ""
@@ -48,14 +48,24 @@ for x in range(0, len(nameImages)):
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)   
     threshImage = thresholding(image)
     noiseImage = remove_noise(threshImage)
+    noiseImage = remove_noise(noiseImage)
     #cv2.imshow("IMG-%d"%x, noiseImage)
-    cv2.imwrite("imageToConvert.jpg", noiseImage)    
-    custom_config = r'-c tessedit_char_blacklist=abcdefghijklmnopqrstuvwxyz%#@$“‘\|/ --psm 6'
-    plateText = pytesseract.image_to_string('imageToConvert.jpg', config=custom_config).replace(" ", "").replace("“", "").replace("\n","")
-    if (len(plateText) > 8):
-        plates[x] = plateText[:8]
-    elif (len(plateText) > 7):
-        plates[x] = plateText[:7]
+    cv2.imwrite("imageToConvert" + str(x) + ".jpg", noiseImage)
+
+    if (width[x] < 700):
+        #custom_config = r'-c tessedit_char_blacklist=abcdefghijklmnopqrstuvwxyz%#()@$“‘\|/ --psm 7'
+        custom_config = r'-c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ-0123456789 --psm 7'
+    else:
+        #custom_config = r'-c tessedit_char_blacklist=abcdefghijklmnopqrstuvwxyz%#()@$“‘\|/ --psm 8'
+        custom_config = r'-c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ-0123456789 --psm 8'
+
+    plateText = pytesseract.image_to_string('imageToConvert' + str(x) + '.jpg', config=custom_config).replace(" ", "").replace("\n", "")
+    if (len(plateText) >= 8):
+        #plates[x] = plateText[:8]
+        plates[x] = plateText
+    elif (len(plateText) >= 7):
+        #plates[x] = plateText[:7]
+        plates[x] = plateText
     else:
         print ("Não identificado")    
     if (plates[x].replace(" ", "") in platesInDataBase):
